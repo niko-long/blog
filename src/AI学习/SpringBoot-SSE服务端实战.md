@@ -67,7 +67,7 @@
 
 其中 `send(SseEventBuilder)` 是最常用的，因为它可以指定事件类型：
 
-```
+```java
 // 推送一个 token 事件
 emitter.send(SseEmitter.event()
         .name("token")                    // event: token
@@ -125,7 +125,7 @@ emitter.send(SseEmitter.event()
 
 先用最少的代码跑通一个 SSE 接口，理解 `SseEmitter` 的基本套路。
 
-```
+```java
 @RestController
 @RequestMapping("/api/sse")
 public class SimpleSseController {
@@ -165,7 +165,7 @@ public class SimpleSseController {
 
 也可以用下面这段 HTML 在浏览器里测试（后面完整版也用这种方式验证）：
 
-```
+```xml
 <!DOCTYPE html>
 <html>
 <body>
@@ -211,7 +211,7 @@ public class SimpleSseController {
 
 #### 2.1 请求和响应结构
 
-```
+```java
 /** 前端请求体 */
 public class ChatRequest {
     private String question;
@@ -221,7 +221,7 @@ public class ChatRequest {
 
 #### 2.2 Controller 层
 
-```
+```java
 @RestController
 @RequestMapping("/api/chat")
 public class ChatController {
@@ -257,7 +257,7 @@ public class ChatController {
 
 #### 2.3 Service 层：流式转发核心逻辑
 
-```
+```java
 @Service
 public class ChatService {
 
@@ -450,7 +450,7 @@ public class ChatService {
 
 配一个简单的前端页面验证效果：
 
-```
+```xml
 <!DOCTYPE html>
 <html>
 <head>
@@ -524,7 +524,7 @@ function startChat() {
 
 建议把 `SseEmitter` 的超时设为 **3~5 分钟**：
 
-```
+```java
 SseEmitter emitter = new SseEmitter(180_000L);  // 3 分钟
 ```
 
@@ -543,7 +543,7 @@ SseEmitter emitter = new SseEmitter(180_000L);  // 3 分钟
 
 解决方案：定期发送心跳注释事件。上一篇讲过，SSE 的注释行（`:` 开头）会被客户端忽略，但对中间件来说有数据在传输，就不会超时断开。
 
-```
+```java
 @Service
 public class ChatService {
 
@@ -581,7 +581,7 @@ public class ChatService {
 
 `SseEmitter` 提供了三个回调来感知连接状态变化：
 
-```
+```java
 SseEmitter emitter = new SseEmitter(180_000L);
 
 emitter.onCompletion(() -> {
@@ -604,7 +604,7 @@ emitter.onError(e -> {
 
 另外，当客户端断开后，`emitter.send()` 会抛出 `IOException`。所以推送代码里要做好异常处理：
 
-```
+```java
 try {
     emitter.send(SseEmitter.event()
             .name("token")
@@ -624,7 +624,7 @@ try {
 
 应该用专门的线程池：
 
-```
+```java
 @Configuration
 public class ThreadPoolConfig {
 
@@ -656,7 +656,7 @@ public class ThreadPoolConfig {
 
 Service 里改用线程池：
 
-```
+```java
 @Service
 public class ChatService {
 
@@ -681,7 +681,7 @@ public class ChatService {
 
 浏览器原生提供了 `EventSource` API 来消费 SSE：
 
-```
+```java
 // 创建 EventSource，自动发起 GET 请求
 const eventSource = new EventSource('/api/chat/stream?question=什么是SSE');
 
@@ -721,7 +721,7 @@ eventSource.addEventListener('error', function(event) {
 
 替代方案是用 `fetch` API + `ReadableStream`，可以发 POST 请求、自定义请求头：
 
-```
+```java
 async function streamChat(question) {
     const response = await fetch('/api/chat/stream', {
         method: 'POST',
@@ -761,7 +761,7 @@ async function streamChat(question) {
 
 如果后端用 `@PostMapping`，Controller 只需要改一行：
 
-```
+```java
 @PostMapping("/stream")
 public SseEmitter stream(@RequestBody ChatRequest request) {
     // ... 其余逻辑不变
@@ -780,7 +780,7 @@ public SseEmitter stream(@RequestBody ChatRequest request) {
 
 解决方案：在 Nginx 的 SSE 接口配置中关闭缓冲。
 
-```
+```java
 location /api/chat/stream {
     proxy_pass http://your-backend;
 
@@ -819,7 +819,7 @@ location /api/chat/stream {
 
 你也可以在 Spring Boot 侧通过响应头来关闭缓冲：
 
-```
+```java
 @GetMapping("/stream")
 public SseEmitter stream(@RequestParam String question,
                           HttpServletResponse response) {

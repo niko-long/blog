@@ -12,7 +12,7 @@
 
 你可能觉得"解析文档内容"这一步很简单——不就是读文件吗？
 
-```
+```java
 // 你以为的代码
 String content = Files.readString(Path.of("report.pdf"));
 ```
@@ -69,7 +69,7 @@ String content = Files.readString(Path.of("report.pdf"));
 
 #### 1.3 文件后缀：会骗人的
 
-```
+```java
 File file = new File("data.txt");
 // 你以为是文本文件，其实...
 ```
@@ -198,7 +198,7 @@ MIME（Multipurpose Internet Mail Extensions）类型是互联网标准，用于
 
 #### 1.2 为什么不能只看文件后缀
 
-```
+```java
 // 危险的做法
 if (filename.endsWith(".pdf")) {
     // 当作 PDF 处理
@@ -207,7 +207,7 @@ if (filename.endsWith(".pdf")) {
 
 **问题 1：后缀可以随便改**
 
-```
+```bash
 mv malware.exe report.pdf  # 后缀是 pdf，内容是 exe
 ```
 
@@ -234,7 +234,7 @@ PNG 图片的前几个字节是：‰PNG
 
 Tika 读取文件的头部字节，与已知的签名库比对，从而判断真实类型。
 
-```
+```java
 // Tika 检测 MIME 类型
 Tika tika = new Tika();
 String mimeType = tika.detect(new File("unknown_file"));
@@ -254,7 +254,7 @@ String mimeType = tika.detect(new File("unknown_file"));
 
 #### 2.2 为什么不能直接读字节
 
-```
+```java
 byte[] bytes = Files.readAllBytes(Path.of("report.docx"));
 String content = new String(bytes, StandardCharsets.UTF_8);
 // 结果：一堆乱码 + 不可见字符
@@ -309,7 +309,7 @@ String content = new String(bytes, StandardCharsets.UTF_8);
 
 #### 3.3 Tika 提取元数据示例
 
-```
+```java
 Metadata metadata = new Metadata();
 // ... 解析文件 ...
 
@@ -390,7 +390,7 @@ Gitee 地址：https://gitee.com/nageoffer/springboot-ladder
 
 在 `pom.xml` 中添加：
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -443,7 +443,7 @@ Gitee 地址：https://gitee.com/nageoffer/springboot-ladder
 
 #### 2.1 创建解析结果 DTO
 
-```
+```java
 /**
  * 文档解析结果
  */
@@ -503,7 +503,7 @@ public class ParseResult {
 
 #### 2.2 创建 Tika 解析服务
 
-```
+```java
 @Slf4j
 @Service
 public class TikaParseService {
@@ -663,7 +663,7 @@ public class TikaParseService {
 
 **BodyContentHandler**：
 
-```
+```java
 BodyContentHandler handler = new BodyContentHandler(MAX_TEXT_LENGTH);
 ```
 
@@ -671,7 +671,7 @@ BodyContentHandler handler = new BodyContentHandler(MAX_TEXT_LENGTH);
 
 **Metadata**：
 
-```
+```java
 Metadata metadata = new Metadata();
 metadata.set(TikaCoreProperties.RESOURCE_NAME_KEY, originalFilename);
 ```
@@ -680,7 +680,7 @@ metadata.set(TikaCoreProperties.RESOURCE_NAME_KEY, originalFilename);
 
 **AutoDetectParser**：
 
-```
+```java
 Parser parser = new AutoDetectParser();
 parser.parse(inputStream, handler, metadata, context);
 ```
@@ -689,7 +689,7 @@ parser.parse(inputStream, handler, metadata, context);
 
 #### 2.3 创建 Controller
 
-```
+```java
 @RestController
 @RequestMapping("/api/document")
 public class DocumentController {
@@ -744,7 +744,7 @@ public class DocumentController {
 
 在 `src/main/resources/application.yml` 中：
 
-```
+```yaml
 spring:
   application:
     name: tika-demo
@@ -762,7 +762,7 @@ server:
 
 #### 2.5 主启动类
 
-```
+```java
 @SpringBootApplication
 public class Tika3xApplication {
 
@@ -778,7 +778,7 @@ public class Tika3xApplication {
 
 **测试 MIME 检测：**
 
-```
+```bash
 # 创建一个测试文件
 echo "Hello World" > test.txt
 
@@ -790,7 +790,7 @@ curl -X POST \
 
 输出：
 
-```
+```json
 {
   "filename": "test.txt",
   "mimeType": "text/plain",
@@ -800,7 +800,7 @@ curl -X POST \
 
 **测试文档解析：**
 
-```
+```bash
 # 解析文本文件
 curl -X POST \
   -F "file=@test.txt" \
@@ -809,7 +809,7 @@ curl -X POST \
 
 输出：
 
-```
+```json
 {
     "success": true,
     "mimeType": "text/plain",

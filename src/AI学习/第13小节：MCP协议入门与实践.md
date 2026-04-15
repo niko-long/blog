@@ -38,7 +38,7 @@
 
 上一篇的代码你应该还有印象，定义一个工具要写多少 JSON Schema：
 
-```
+```java
 JsonObject tool1 = new JsonObject();
 tool1.addProperty("type", "function");
 JsonObject function1 = new JsonObject();
@@ -81,7 +81,7 @@ tool1.add("function", function1);
 
 三种不同的调用方式，你的代码里要写三套集成逻辑：
 
-```
+```java
 if ("getUserAnnualLeave".equals(functionName)) {
     // 直接调用本地 Java 方法
     return hrService.getAnnualLeave(userId);
@@ -246,7 +246,7 @@ Server 定义工具，Client 发现并调用工具。和 Function Call 的区别
 
 举个例子，Function Call 里你要这样定义工具：
 
-```
+```json
 {
   "type": "function",
   "function": {
@@ -265,7 +265,7 @@ Server 定义工具，Client 发现并调用工具。和 Function Call 的区别
 
 在 Spring AI 框架中，你可以用 `@Tool` 注解定义工具（框架会自动生成符合 MCP 协议的工具元数据）：
 
-```
+```java
 @Tool(description = "查询用户的年假余额，包括总天数、已使用天数、剩余天数")
 public String getUserAnnualLeave(@ToolParam(description = "用户 ID") String userId) {
     // 查询 HR 系统
@@ -476,7 +476,7 @@ Spring AI MCP Server 提供了三个 Starter，根据传输方式选择：
 
 创建一个 Spring Boot 项目，`pom.xml` 如下：
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -530,7 +530,7 @@ Spring AI MCP Server 提供了三个 Starter，根据传输方式选择：
 
 创建一个工具类 `EnterpriseTools.java`：
 
-```
+```java
 package com.nageoffer.ai.mcp.tools;
 
 import org.springframework.ai.tool.annotation.Tool;
@@ -592,7 +592,7 @@ public class EnterpriseTools {
 
 创建配置类，把工具注册到 MCP Server：
 
-```
+```java
 package com.nageoffer.ai.mcp.config;
 
 import com.nageoffer.ai.mcp.tools.EnterpriseTools;
@@ -624,7 +624,7 @@ public class McpServerConfig {
 
 `application.yml` 配置：
 
-```
+```yaml
 spring:
   ai:
     mcp:
@@ -659,7 +659,7 @@ logging:
 
 ### 7. 启动类
 
-```
+```java
 package com.nageoffer.ai.mcp;
 
 import org.springframework.boot.SpringApplication;
@@ -676,7 +676,7 @@ public class McpServerApplication {
 
 项目结构：
 
-```
+```bash
 mcp-server-demo/
 ├── pom.xml
 └── src/main/
@@ -692,7 +692,7 @@ mcp-server-demo/
 
 先用 Maven 打包：
 
-```
+```bash
 mvn clean package -DskipTests
 ```
 
@@ -708,7 +708,7 @@ mvn clean package -DskipTests
 
 添加：
 
-```
+```json
 {
   "mcpServers": {
     "enterprise-assistant": {
@@ -726,7 +726,7 @@ mvn clean package -DskipTests
 
 咱们 MCP Demo 项目用的 JDK17，如果你的电脑默认不是 JDK17，需要将 command 设置为 Java 的绝对路径。我的默认 JDK 就不是 17，所以需要调整下，比如：
 
-```
+```json
 {
   "mcpServers": {
     "enterprise-assistant": {
@@ -755,7 +755,7 @@ mvn clean package -DskipTests
 
 第一步，把 Maven 依赖换成 WebMVC 版本：
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.ai</groupId>
     <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
@@ -765,7 +765,7 @@ mvn clean package -DskipTests
 
 第二步，修改 `application.yml`：
 
-```
+```yaml
 spring:
   ai:
     mcp:
@@ -780,7 +780,7 @@ server:
 
 启动后，MCP Server 会在 `http://localhost:8080` 上监听。Client 配置改为：
 
-```
+```json
 {
   "mcpServers": {
     "enterprise-assistant": {
@@ -817,7 +817,7 @@ server:
 
 上一篇讲 Function Call 在 RAG 中的应用时，我们定义了一个 `searchKnowledgeBase` 工具，让模型自动判断是查知识库还是调业务工具。用 MCP 实现同样的能力，只需要把知识检索封装成一个 MCP 工具：
 
-```
+```java
 @Tool(description = "在企业知识库中搜索相关文档。当用户询问公司制度、产品文档、操作指南等静态知识时使用此工具。")
 public String searchKnowledgeBase(
         @ToolParam(description = "搜索关键词，用自然语言描述") String query,
