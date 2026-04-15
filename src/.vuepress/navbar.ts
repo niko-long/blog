@@ -3,9 +3,9 @@ import {navbar} from "vuepress-theme-hope";
 export default navbar([
     "/",
     {
-        text: "八股",
+        text: "AI学习",
         icon: "calendar",
-        link: "/8gu/README.md",
+        link: "/AI学习/README.md",
     },
     {
         text: "🐉🐉一百面",

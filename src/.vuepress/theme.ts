@@ -21,203 +21,66 @@ export default hopeTheme({
 
     sidebar: {
         // 对特定目录进行结构优化
-        "/8gu/": [
+        "/AI学习/": [
             {
-                text: "八股知识分享",
-                collapsible: true,
-                expanded: true,
-                link: "/8gu/README.md",
-                children: [
+                "text": "AI学习",
+                "collapsible": false,
+                "expanded": true,
+                "link": "/AI学习/README.md",
+                "children": [
                     {
-                        text: "Java基础",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "五种IO模型",
-                                link: "/8gu/5种IO模型.md"
-                            },
-                            {
-                                text: "Hashmap,ConcurrentHashmap详解",
-                                link: "/8gu/Hashmap,ConcurrentHashmap以及它们各个JDK下的差异.md"
-                            },
-                            {
-                                text: "JDK动态代理和CGlib动态代理的区别",
-                                link: "/8gu/JDK动态代理和CGlib动态代理的区别.md"
-                            },
-                            {
-                                text: "SPI 机制详解",
-                                link: "/8gu/SPI 机制详解.md"
-                            },
-                            {
-                                text: "ThreadLocal 全面解析",
-                                link: "/8gu/ThreadLocal 全面解析.md"
-                            },
-                            {
-                                text: "🪄其他",
-                                link: "/8gu/Java基础.md"
-                            }
+                        "text": "一、基础入门",
+                        "collapsible": false,
+                        "children": [
+                            "/AI学习/第1小节：认识大模型.md",
+                            "/AI学习/第2小节：调用大模型API.md",
+                            "/AI学习/第3小节：Prompt工程入门.md",
+                            "/AI学习/第4小节：什么是RAG？.md"
                         ]
                     },
                     {
-                        text: "Mysql",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "MVCC原理与实现",
-                                link: "/8gu/MVCC原理与实现.md"
-                            },
-                            {
-                                text: "✨Mysql三种日志",
-                                link: "https://resource.codelong.top/Mysql三种日志"
-                            },
-                            {
-                                text: "BufferPool的缓存清除策略详解",
-                                link: "/8gu/BufferPool的缓存清除策略详解.md"
-                            },
-                            {
-                                text: "✨SQL优化",
-                                link: "https://resource.codelong.top/sql优化"
-                            },
-                            {
-                                text: "✨介绍一下MySql的各种锁",
-                                link: "https://resource.codelong.top/介绍一下MySql的各种锁"
-                            },
-                            {
-                                text: "🪄其他",
-                                link: "/8gu/Mysql.md"
-                            }
+                        "text": "二、RAG 核心环节深度解析",
+                        "collapsible": false,
+                        "children": [
+                            "/AI学习/第5小节：用Apache_Tika解析文档.md",
+                            "/AI学习/第6小节：数据分块Chunk策略与实践.md",
+                            "/AI学习/第7小节：元数据的作用与管理.md",
+                            "/AI学习/第8小节：从文本到向量之理解Embedding.md",
+                            "/AI学习/第9小节：向量数据库的原理与选型.md",
+                            "/AI学习/第10小节：向量检索策略与召回优化.md",
+                            "/AI学习/第11小节：大模型生成策略与幻觉抑制.md",
+                            "/AI学习/RAG模型检索生成评估与优化.md"
                         ]
                     },
                     {
-                        text: "JUC",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "AQS原理深入解析",
-                                link: "/8gu/AQS原理深入解析.md"
-                            },
-                            {
-                                text: "JUC工具类",
-                                link: "/8gu/JUC工具类.md"
-                            },
-                            {
-                                text: "Synchronized详解",
-                                link: "/8gu/Synchronized详解.md"
-                            },
-                            {
-                                text: "线程池核心参数解析",
-                                link: "/8gu/线程池核心参数解析.md"
-                            },
-                            {
-                                text: "🪄其他",
-                                link: "/8gu/JUC.md"
-                            }
+                        "text": "三、Agent 意图与函数调用",
+                        "collapsible": false,
+                        "children": [
+                            "/AI学习/第12小节：理解函数调用Function_Call.md",
+                            "/AI学习/意图识别与多路由调度策略.md",
+                            "/AI学习/查询重写与语义增强机制.md",
+                            "/AI学习/多轮对话记忆设计.md",
+                            "/AI学习/工具调用架构设计指南.md",
+                            "/AI学习/工具调用稳定性与安全保障.md"
                         ]
                     },
                     {
-                        text: "JVM",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "JIT优化及逃逸分析",
-                                link: "/8gu/JIT优化及逃逸分析.md"
-                            },
-                            {
-                                text: "JVM垃圾回收算法和回收器详解",
-                                link: "/8gu/JVM垃圾回收算法和回收器详解.md"
-                            },
-                            {
-                                text: "✨类的生命周期",
-                                link: "https://resource.codelong.top/类的生命周期"
-                            },
-                            {
-                                text: "什么是JMM",
-                                link: "/8gu/什么是JMM.md"
-                            },
-                            {
-                                text: "双亲委派机制",
-                                link: "/8gu/双亲委派机制.md"
-                            },
-                            {
-                                text: "不同JDK版本中字符串常量池的差异",
-                                link: "/8gu/不同JDK版本中字符串常量池的演进.md"
-                            },
-                            {
-                                text: "🪄其他",
-                                link: "/8gu/JVM.md"
-                            }
+                        "text": "四、MCP 协议深度实践",
+                        "collapsible": false,
+                        "children": [
+                            "/AI学习/第13小节：MCP协议入门与实践.md",
+                            "/AI学习/深入解析MCP中的Resources与Prompts.md",
+                            "/AI学习/MCP之官方Java-SDK深度解析.md",
+                            "/AI学习/MCP协议规范：JSON-RPC_2.0标准说明.md",
+                            "/AI学习/为什么MCP不使用HTTP或gRPC？.md"
                         ]
                     },
                     {
-                        text: "Redis",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "BitMap和流量统计",
-                                link: "/8gu/BitMap和流量统计.md"
-                            },
-                            {
-                                text: "✨Redis Stream",
-                                link: "https://resource.codelong.top/Redis Stream"
-                            },
-                            {
-                                text: "Redisson 分布式锁：全面解析",
-                                link: "/8gu/Redisson 分布式锁：全面解析.md"
-                            }
-                        ]
-                    },
-                    {
-                        text: "Spring",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "✨Bean的初始化流程和生命周期",
-                                link: "https://resource.codelong.top/Bean的初始化流程和生命周期"
-                            },
-                            {
-                                text: "✨SpringBoot自动配置",
-                                link: "https://resource.codelong.top/SpringBoot自动配置"
-                            },
-                            {
-                                text: "介绍一下IOC和AOP",
-                                link: "/8gu/介绍一下IOC和AOP.md"
-                            },
-                            {
-                                text: "循环依赖",
-                                link: "/8gu/循环依赖.md"
-                            },
-                            {
-                                text: "🪄其他",
-                                link: "/8gu/Spring.md"
-                            }
-                        ]
-                    },
-                    {
-                        text: "RocketMQ",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "✨RocketMQ事务消息",
-                                link: "https://resource.codelong.top/Rocketmq事务消息"
-                            },
-                            {
-                                text: "✨RocketMQ消息可靠性",
-                                link: "https://resource.codelong.top/RocketMQ消息可靠性"
-                            }
-                        ]
-                    },
-                    {
-                        text: "其他",
-                        collapsible: true,
-                        children: [
-                            {
-                                text: "✨ElasticSearch为什么快深度分页怎么解决",
-                                link: "https://resource.codelong.top/ElasticSearch为什么快深度分页怎么解决"
-                            },
-                            {
-                                text: "零拷贝详解",
-                                link: "/8gu/零拷贝详解.md"
-                            }
+                        "text": "五、工程化与交互优化",
+                        "collapsible": false,
+                        "children": [
+                            "/AI学习/SSE协议与流式响应.md",
+                            "/AI学习/SpringBoot-SSE服务端实战.md"
                         ]
                     }
                 ]
@@ -850,7 +713,7 @@ export default hopeTheme({
         // },
 
         components: {
-            components: ["Badge", "VPCard","PDF"],
+            components: ["Badge", "VPCard", "PDF"],
         }
         ,
 
