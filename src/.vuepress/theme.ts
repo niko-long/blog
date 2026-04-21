@@ -21,6 +21,14 @@ export default hopeTheme({
 
     sidebar: {
         // 对特定目录进行结构优化
+        "/AI面试题/": [
+            "/AI面试题/大模型基础面试题.md",
+            "/AI面试题/Prompt面试题.md",
+            "/AI面试题/RAG面试题.md",
+            "/AI面试题/FunctionCall面试题.md",
+            "/AI面试题/MCP面试题.md",
+            "/AI面试题/SSE面试题.md"
+        ],
         "/AI学习/": [
             {
                 "text": "AI学习",

@@ -8,6 +8,10 @@ export default navbar([
         link: "/AI学习/README.md",
     },
     {
+        text: "AI相关面试题",
+        link: "/AI面试题/大模型基础面试题.md",
+    },
+    {
         text: "🐉🐉一百面",
         link: "/interviews/index.md",
     },
