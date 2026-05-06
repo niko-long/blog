@@ -3,11 +3,6 @@ import {navbar} from "vuepress-theme-hope";
 export default navbar([
     "/",
     {
-        text: "AI学习",
-        icon: "calendar",
-        link: "/AI学习/README.md",
-    },
-    {
         text: "AI相关面试题",
         link: "/AI面试题/大模型基础面试题.md",
     },
