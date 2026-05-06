@@ -29,71 +29,7 @@ export default hopeTheme({
             "/AI面试题/MCP面试题.md",
             "/AI面试题/SSE面试题.md"
         ],
-        "/AI学习/": [
-            {
-                "text": "AI学习",
-                "collapsible": false,
-                "expanded": true,
-                "link": "/AI学习/README.md",
-                "children": [
-                    {
-                        "text": "一、基础入门",
-                        "collapsible": false,
-                        "children": [
-                            "/AI学习/第1小节：认识大模型.md",
-                            "/AI学习/第2小节：调用大模型API.md",
-                            "/AI学习/第3小节：Prompt工程入门.md",
-                            "/AI学习/第4小节：什么是RAG？.md"
-                        ]
-                    },
-                    {
-                        "text": "二、RAG 核心环节深度解析",
-                        "collapsible": false,
-                        "children": [
-                            "/AI学习/第5小节：用Apache_Tika解析文档.md",
-                            "/AI学习/第6小节：数据分块Chunk策略与实践.md",
-                            "/AI学习/第7小节：元数据的作用与管理.md",
-                            "/AI学习/第8小节：从文本到向量之理解Embedding.md",
-                            "/AI学习/第9小节：向量数据库的原理与选型.md",
-                            "/AI学习/第10小节：向量检索策略与召回优化.md",
-                            "/AI学习/第11小节：大模型生成策略与幻觉抑制.md",
-                            "/AI学习/RAG模型检索生成评估与优化.md"
-                        ]
-                    },
-                    {
-                        "text": "三、Agent 意图与函数调用",
-                        "collapsible": false,
-                        "children": [
-                            "/AI学习/第12小节：理解函数调用Function_Call.md",
-                            "/AI学习/意图识别与多路由调度策略.md",
-                            "/AI学习/查询重写与语义增强机制.md",
-                            "/AI学习/多轮对话记忆设计.md",
-                            "/AI学习/工具调用架构设计指南.md",
-                            "/AI学习/工具调用稳定性与安全保障.md"
-                        ]
-                    },
-                    {
-                        "text": "四、MCP 协议深度实践",
-                        "collapsible": false,
-                        "children": [
-                            "/AI学习/第13小节：MCP协议入门与实践.md",
-                            "/AI学习/深入解析MCP中的Resources与Prompts.md",
-                            "/AI学习/MCP之官方Java-SDK深度解析.md",
-                            "/AI学习/MCP协议规范：JSON-RPC_2.0标准说明.md",
-                            "/AI学习/为什么MCP不使用HTTP或gRPC？.md"
-                        ]
-                    },
-                    {
-                        "text": "五、工程化与交互优化",
-                        "collapsible": false,
-                        "children": [
-                            "/AI学习/SSE协议与流式响应.md",
-                            "/AI学习/SpringBoot-SSE服务端实战.md"
-                        ]
-                    }
-                ]
-            }
-        ],
+
         "/projects/algorithm/": [
             {
                 text: "山西大学算法队OnlineJudge",
