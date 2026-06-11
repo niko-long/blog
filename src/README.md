@@ -30,7 +30,7 @@ highlights:
       - title: 项目地址
         icon: lightbulb
         details: 在GitHub上查看该项目
-        link: https://github.com/1973034392/api-gateway-codelong
+        link: https://github.com/niko-long/gateway
       - title: 详细信息
         icon: box-archive
         details: 查看详情
