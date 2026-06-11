@@ -20,6 +20,22 @@ export default hopeTheme({
     navbar,
 
     sidebar: {
+        "/AI知识点讲解": [
+            "/llm-knowledge/01-llm-basics.md",
+            "/llm-knowledge/02-prompt-engineering.md",
+            "/llm-knowledge/03-context-and-memory.md",
+            "/llm-knowledge/04-rag-part1-fundamentals.md",
+            "/llm-knowledge/05-rag-part2-advanced.md",
+            "/llm-knowledge/06-agent-part1-foundations.md",
+            "/llm-knowledge/07-agent-part2-multi-agent.md",
+            "/llm-knowledge/08-frameworks-and-engineering.md",
+            "/llm-knowledge/09-inference-and-deployment.md",
+            "/llm-knowledge/10-training-and-finetune.md",
+            "/llm-knowledge/11-evaluation-and-observability.md",
+            "/llm-knowledge/12-safety-and-compliance.md",
+            "/llm-knowledge/13-multimodal-and-frontier.md",
+            "/llm-knowledge/Harness_Engineering分享_分享文档.md"
+        ],
         // 对特定目录进行结构优化
         "/AI面试题/": [
             "/AI面试题/大模型基础面试题.md",
