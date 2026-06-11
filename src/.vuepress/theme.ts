@@ -12,7 +12,7 @@ export default hopeTheme({
 
     logo: "/favicon.ico",
 
-    repo: "1973034392/api-gateway-codelong",
+    repo: "niko-long/gateway",
 
     docsDir: "src",
 
