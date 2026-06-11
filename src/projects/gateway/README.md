@@ -2,7 +2,7 @@
 
 本系统是一个基于Netty和Springboot **责任链模式** 和 **分布式服务治理**的微服务网关，核心功能包括 **负载均衡、请求鉴权、自定义请求处理、接口调用处理、结果包装、服务注册与发现、动态配置更新** 等。系统通过 **Redis** 实现接口信息缓存、心跳状态同步，结合 **JWT鉴权** 与 **安全组标识** 完成权限校验，支持 **HTTP/Dubbo** 双协议封装与泛化调用。
 
-在`GitHub`上查看[项目地址](https://github.com/1973034392/api-gateway-codelong)
+在`GitHub`上查看[项目地址](https://github.com/niko-long/gateway)
 
 ---
 

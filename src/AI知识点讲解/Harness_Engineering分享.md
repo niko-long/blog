@@ -1,4 +1,4 @@
-# Harness Engineering 知识分享：让大模型「真正能干活」的工程方式
+# Harness Engineering 知识分享
 
 ## 一、为什么我们今天要聊 Harness Engineering
 

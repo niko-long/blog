@@ -3,6 +3,10 @@ import {navbar} from "vuepress-theme-hope";
 export default navbar([
     "/",
     {
+        text: "AI知识点讲解",
+        link: "/AI知识点讲解/01-llm-basics.md",
+    },
+    {
         text: "AI相关面试题",
         link: "/AI面试题/大模型基础面试题.md",
     },
