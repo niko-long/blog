@@ -8,6 +8,8 @@
           <option name="hasMoreRemoteMessages" value="false" />
           <option name="id" value="019eb5f1ab5d7199b6a32ce79cd883b3" />
           <option name="nextBeforeCursor" value="" />
+          <option name="remoteOldestRequestAt" value="2026-06-11 17:11:17" />
+          <option name="storageSource" value="REMOTE" />
           <option name="title" value="AI知识点补全" />
           <option name="turns">
             <list>

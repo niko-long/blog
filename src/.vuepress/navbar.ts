@@ -20,6 +20,11 @@ export default navbar([
         link: "/projects/gateway/README.md",
     },
     {
+        text: "言之有理",
+        icon: "lightbulb",
+        link: "/projects/yzyl/README.md",
+    },
+    {
         text: "畅购通购票系统",
         icon: "lightbulb",
         link: "/projects/easypass/README.md",
